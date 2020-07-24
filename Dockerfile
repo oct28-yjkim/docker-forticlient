@@ -23,6 +23,7 @@ WORKDIR /root
 # Install fortivpn client unofficial .deb
 RUN wget 'https://hadler.me/files/forticlient-sslvpn_4.4.2333-1_amd64.deb' -O forticlient-sslvpn_amd64.deb
 RUN dpkg -x forticlient-sslvpn_amd64.deb /usr/share/forticlient && rm forticlient-sslvpn_amd64.deb
+RUN mknod /dev/ppp c 108 0
 
 # Run setup
 RUN /usr/share/forticlient/opt/forticlient-sslvpn/64bit/helper/setup
