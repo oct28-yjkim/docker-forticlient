@@ -21,11 +21,12 @@ RUN apt-get update && \
 WORKDIR /root
 
 # Install fortivpn client unofficial .deb
-RUN wget 'https://hadler.me/files/forticlient-sslvpn_4.4.2329-1_amd64.deb' -O forticlient-sslvpn_amd64.deb
-RUN dpkg -x forticlient-sslvpn_amd64.deb /usr/share/forticlient && rm forticlient-sslvpn_amd64.deb
+RUN wget -O - https://repo.fortinet.com/repo/ubuntu/DEB-GPG-KEY | sudo apt-key add - 
+RUN deb [arch=amd64] https://repo.fortinet.com/repo/ubuntu/ /bionic multiverse 
 
 # Run setup
-RUN /usr/share/forticlient/opt/forticlient-sslvpn/64bit/helper/setup.linux.sh 2
+RUN apt-get update 
+RUN apt install forticlient
 
 # Copy runfiles
 COPY forticlient /usr/bin/forticlient
