@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
 ENV VPNADDR \
     VPNUSER \
@@ -21,12 +21,11 @@ RUN apt-get update && \
 WORKDIR /root
 
 # Install fortivpn client unofficial .deb
-RUN wget -O - https://repo.fortinet.com/repo/ubuntu/DEB-GPG-KEY | sudo apt-key add - 
-RUN deb [arch=amd64] https://repo.fortinet.com/repo/ubuntu/ /bionic multiverse 
+RUN wget 'https://hadler.me/files/forticlient-sslvpn_4.4.2333-1_amd64.deb' -O forticlient-sslvpn_amd64.deb
+RUN dpkg -x forticlient-sslvpn_amd64.deb /usr/share/forticlient && rm forticlient-sslvpn_amd64.deb
 
 # Run setup
-RUN apt-get update 
-RUN apt install forticlient
+RUN /usr/share/forticlient/opt/forticlient-sslvpn/64bit/helper/setup.linux.sh 2
 
 # Copy runfiles
 COPY forticlient /usr/bin/forticlient
