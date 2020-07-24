@@ -25,7 +25,7 @@ RUN wget 'https://hadler.me/files/forticlient-sslvpn_4.4.2333-1_amd64.deb' -O fo
 RUN dpkg -x forticlient-sslvpn_amd64.deb /usr/share/forticlient && rm forticlient-sslvpn_amd64.deb
 
 # Run setup
-RUN /usr/share/forticlient/opt/forticlient-sslvpn/64bit/helper/setup.linux.sh 2
+RUN /usr/share/forticlient/opt/forticlient-sslvpn/64bit/helper/setup
 
 # Copy runfiles
 COPY forticlient /usr/bin/forticlient
