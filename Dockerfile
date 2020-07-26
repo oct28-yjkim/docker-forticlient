@@ -1,8 +1,7 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && \
-  apt-get install -y -o APT::Install-Recommends=false -o APT::Install-Suggests=false \
-  openfortivpn \
+  apt-get install -y openfortivpn \
   wget \
   && apt-get clean -q && apt-get autoremove --purge \
   && rm -rf /var/lib/apt/lists/*
