@@ -26,7 +26,7 @@ Connect to a Fortigate VPNs through docker: openfortivpn + glider
         vicnz03/forticlient
     ```
 
-Now you can use SSL-VPN via `http://<container-ip>:8443` or `socks5://<container-ip>:8443`.
+Now you can use SSL-VPN via `http://<container-ip>:8888` or `socks5://<container-ip>:8888`.
 
 ### OSX
     ```
