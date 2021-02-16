@@ -12,30 +12,18 @@ Connect to a Fortigate VPNs through docker: openfortivpn + glider
     port = 443
     username = foo
     password = bar
+    trusted-cert = 123123
     ```
 
 2. Run the following command to start the container.
 
 ### Linux
     ```
-    $ docker container run \
+    $ sudo docker container run \
         --cap-add=NET_ADMIN \
         --device=/dev/ppp \
+        --net=host \
         --rm \
         -v /path/to/config:/etc/openfortivpn/config:ro \
         vicnz03/forticlient
     ```
-
-Now you can use SSL-VPN via `http://<container-ip>:8888` or `socks5://<container-ip>:8888`.
-
-### OSX
-    ```
-    $ docker container run \
-        --cap-add=NET_ADMIN \
-        --privileged  \
-        --rm \
-        -p "8888:8888" \
-        -v /path/to/config:/etc/openfortivpn/config:ro \
-        vicnz03/forticlient
-    ```
-Now you can use SSL-VPN via `http://localhost:8888` or `socks5://localhost:8888`.
