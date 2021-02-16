@@ -14,8 +14,11 @@ Connect to a Fortigate VPNs through docker: openfortivpn + glider
     password = bar
     trusted-cert = 123123
     ```
-
-2. Run the following command to start the container.
+2. build image 
+    
+    ```
+    $ docker build -t yjkim1ntels/forticlient:latest .
+    ```
 
 ### Linux
     ```
@@ -25,5 +28,5 @@ Connect to a Fortigate VPNs through docker: openfortivpn + glider
         --net=host \
         --rm \
         -v /path/to/config:/etc/openfortivpn/config:ro \
-        vicnz03/forticlient
+        yjkim1ntels/forticlient:latest
     ```
